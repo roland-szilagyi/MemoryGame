@@ -1,0 +1,5 @@
+footer {
+  @include outline;
+  @include box(100vw, 12vh);
+  @include flex(flex, row, space-evenly, center, nowrap);
+}

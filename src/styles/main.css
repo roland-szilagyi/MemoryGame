@@ -1,0 +1,81 @@
+/*
+@include screen(laptop) {
+  width: 80vw;
+}
+*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  text-decoration: none;
+}
+
+body {
+  font-size: 15px;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  font-weight: 100;
+}
+
+@font-face {
+  src: url(../assets/fonts/fontname.ttf);
+  font-family: "font-primary";
+}
+@font-face {
+  src: url(../assets/fonts/fontname.ttf);
+  font-family: "font-secondary";
+}
+header {
+  outline: 1px dashed green;
+  width: 100vw;
+  height: 12vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+footer {
+  outline: 1px dashed green;
+  width: 100vw;
+  height: 12vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.home {
+  outline: 1px dashed green;
+  width: 100vw;
+  height: 76vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}/*# sourceMappingURL=main.css.map */
