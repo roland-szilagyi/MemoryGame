@@ -78,4 +78,38 @@ footer {
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
+}
+
+.home.hidden {
+  display: none;
+}
+
+.options {
+  outline: 1px dashed green;
+  width: 100vw;
+  height: 76vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.options.hidden {
+  display: none;
+}
+
+.game {
+  outline: 1px dashed green;
+  width: 100vw;
+  height: 76vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.game.hidden {
+  display: none;
 }/*# sourceMappingURL=main.css.map */

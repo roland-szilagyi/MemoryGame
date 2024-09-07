@@ -1,9 +1,9 @@
-.home {
+.game {
   @include outline;
   @include box(100vw, 76vh);
   @include flex(flex, column, center, center, nowrap);
 }
 
-.home.hidden {
+.game.hidden {
   display: none;
 }
