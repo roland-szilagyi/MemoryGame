@@ -1,0 +1,25 @@
+// FLEXBOX
+@mixin flex($display, $flex-direction, $justify-content, $align-items, $flex-wrap) {
+  display: $display;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-wrap: $flex-wrap;
+}
+
+// BOX
+@mixin box($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+// FONT-SIZE
+@mixin font-size($font-size, $letter-spacing, $line-height) {
+  font-size: $font-size;
+  letter-spacing: $letter-spacing;
+  line-height: $line-height;
+}
+
+@mixin outline() {
+  outline: 1px dashed yellow;
+}

@@ -1,0 +1,11 @@
+$font-primary: "../assets/fonts";
+@font-face {
+  src: url(#{$font-primary}/fontname.ttf);
+  font-family: 'font-primary';
+}
+
+$font-secondary: "../assets/fonts";
+@font-face {
+  src: url(#{$font-secondary}/fontname.ttf);
+  font-family: 'font-secondary';
+}

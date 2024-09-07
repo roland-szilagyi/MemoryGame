@@ -1,0 +1,42 @@
+$breakpoint-mobil: 375px;        // 375-768
+$breakpoint-tablet: 768px;       // 768-1024
+$breakpoint-desktop: 1024px;     // 1024-1200
+$breakpoint-xldesktop: 1200px;   // 1201-
+
+// MOBILE FIRST MEDIA QUERY
+@mixin screen($size, $type: min, $pixels: $breakpoint-mobil) {
+  @if $size == 'tablet' {
+    @media screen and (#{$type}-width: $breakpoint-tablet) {
+        @content;
+    }
+  }
+  @else if $size == 'laptop' {
+    @media screen and (#{$type}-width: $breakpoint-laptop) {
+        @content;
+    }
+  }
+  @else if $size == 'desktop' {
+    @media screen and (#{$type}-width: $breakpoint-desktop) {
+        @content;
+    }
+  }
+  @else if $size == 'xldesktop' {
+    @media screen and (#{$type}-width: $breakpoint-xldesktop) {
+        @content;
+    }
+  }
+  @else if $size == 'custom' {
+    @media screen and (#{$type}-width: #{$pixels}px) {
+      @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+/*
+@include screen(laptop) {
+  width: 80vw;
+}
+*/
