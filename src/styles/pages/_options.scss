@@ -1,5 +1,5 @@
 .header__options {
-  
+  @include outline;
 }
 
 .main__options {
@@ -8,7 +8,32 @@
 
   form {
     @include outline;
-    @include flex(flex, column, center, center, nowrap);
+    @include box(100vw, 78vh);
+    @include flex(flex, column, space-evenly, center, nowrap);
+
+    .component__cont {
+      @include outline;
+      @include box(70vw, auto);
+      @include flex(flex, column, center, center, nowrap);
+    
+      .title__cont {
+        @include outline;
+
+        h2 {
+          @include outline;
+        }
+      }
+
+      .input__cont {
+        @include outline;
+        @include box(100%, auto);
+        @include flex(flex, row, space-evenly, center, nowrap);
+        
+        label {
+          
+        }
+      }
+    }
   }
 }
 

@@ -100,6 +100,10 @@ main {
   flex-wrap: nowrap;
 }
 
+.header__home {
+  outline: 1px dashed green;
+}
+
 .main__home {
   width: 100vw;
   height: 78vh;
@@ -147,6 +151,10 @@ main {
   margin: 0 auto;
 }
 
+.header__options {
+  outline: 1px dashed green;
+}
+
 .main__options {
   width: 100vw;
   height: 78vh;
@@ -156,9 +164,40 @@ main {
 }
 .main__options form {
   outline: 1px dashed green;
+  width: 100vw;
+  height: 78vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.main__options form .component__cont {
+  outline: 1px dashed green;
+  width: 70vw;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
+}
+.main__options form .component__cont .title__cont {
+  outline: 1px dashed green;
+}
+.main__options form .component__cont .title__cont h2 {
+  outline: 1px dashed green;
+}
+.main__options form .component__cont .input__cont {
+  outline: 1px dashed green;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.header__game {
+  outline: 1px dashed green;
 }/*# sourceMappingURL=main.css.map */
