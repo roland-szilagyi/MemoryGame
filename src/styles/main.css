@@ -55,11 +55,11 @@ header h2 {
   display: none;
 }
 
-main div {
+main section {
   display: none;
 }
 
-footer div {
+footer section {
   display: none;
 }
 
@@ -98,4 +98,8 @@ main {
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
+}
+
+.main__options {
+  color: rebeccapurple;
 }/*# sourceMappingURL=main.css.map */
