@@ -51,6 +51,22 @@ p, h1, h2, h3, h4, h5, h6 {
   src: url(../assets/fonts/fontname.ttf);
   font-family: "font-secondary";
 }
+header h2 {
+  display: none;
+}
+
+main div {
+  display: none;
+}
+
+footer div {
+  display: none;
+}
+
+.active {
+  display: flex;
+}
+
 header {
   outline: 1px dashed green;
   width: 100vw;
@@ -73,7 +89,7 @@ footer {
   flex-wrap: nowrap;
 }
 
-.home {
+main {
   outline: 1px dashed green;
   width: 100vw;
   height: 76vh;
@@ -82,38 +98,4 @@ footer {
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
-}
-
-.home.hidden {
-  display: none;
-}
-
-.options {
-  outline: 1px dashed green;
-  width: 100vw;
-  height: 76vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-.options.hidden {
-  display: none;
-}
-
-.game {
-  outline: 1px dashed green;
-  width: 100vw;
-  height: 76vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-}
-
-.game.hidden {
-  display: none;
 }/*# sourceMappingURL=main.css.map */

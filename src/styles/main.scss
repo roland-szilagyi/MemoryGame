@@ -10,10 +10,12 @@
 
 // COMPONENTS
 @import "./components/buttons";
+@import "./components/visibility";
 
 // LAYOUT
 @import "./layout/header";
 @import "./layout/footer";
+@import "./layout/main";
 
 // PAGES
 @import "./pages/home";

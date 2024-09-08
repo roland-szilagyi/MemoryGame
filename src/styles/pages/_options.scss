@@ -1,9 +1,11 @@
-.options {
-  @include outline;
-  @include box(100vw, 76vh);
-  @include flex(flex, column, center, center, nowrap);
+.header__options {
+  
 }
 
-.options.hidden {
-  display: none;
+.main__options {
+
+}
+
+.footer__options {
+
 }

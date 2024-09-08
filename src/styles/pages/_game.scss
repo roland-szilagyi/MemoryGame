@@ -1,9 +1,11 @@
-.game {
-  @include outline;
-  @include box(100vw, 76vh);
-  @include flex(flex, column, center, center, nowrap);
+.header__game {
+  
 }
 
-.game.hidden {
-  display: none;
+.main__game {
+
+}
+
+.footer__game {
+
 }

@@ -1,9 +1,11 @@
-.home {
-  @include outline;
-  @include box(100vw, 76vh);
-  @include flex(flex, column, center, center, nowrap);
+.header__home {
+  
 }
 
-.home.hidden {
-  display: none;
+.main__home {
+
+}
+
+.footer__home {
+
 }

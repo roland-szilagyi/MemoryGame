@@ -8,26 +8,27 @@
 </head>
 <body>
   <header>
-    <h2>Memory Game</h2>
+    <h2 class="header__home  js-home  active">Memory Game</h2>
+    <h2 class="header__options js-options">Options</h2>
+    <h2 class="header__game  js-game">Find the pairs of cards</h2>
   </header>
 
-  <article class="home  js-home">
-    <h2>Home screen</h2>
-  </article>
-
-  <article class="options  js-options  hidden">
-    <h2>Options screen</h2>
-  </article>
-
-  <article class="game  js-game  hidden">
-    <h2>Game screen</h2>
-  </article>
+  <main>
+    <div class="main__home  js-home  active">Home screen</div>
+    <div class="main__options  js-options">Options screen</div>
+    <div class="main__game  js-game">Game screen</div>
+  </main>
   
   <footer>
-    <div>
+    <div class="footer__home  js-home  active">
       <button class="js-btn-next">NEXT</button>
-      <button class="js-btn-home  hidden">HOME</button>
-      <button class="js-btn-start  hidden">START</button>
+    </div>
+    <div class="footer__options  js-options">
+      <button class="js-btn-home">HOME</button>
+      <button class="js-btn-start">START</button>
+    </div>
+    <div class="footer__game  js-game">
+      <button class="js-btn-stop">STOP</button>
     </div>
   </footer>
 <script src="./src/js/script.js"></script>
