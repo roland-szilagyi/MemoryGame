@@ -32,9 +32,12 @@ footer section {
 body {
   font-size: 15px;
   line-height: 1.2;
+  color: white;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-image: url('../assets/imgs/table-green.jpg');
+  background-size: cover;
 }
 
 ol, ul {
