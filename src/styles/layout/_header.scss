@@ -1,5 +1,5 @@
 header {
   @include outline;
-  @include box(100vw, 12vh);
+  @include box(100vw, 10vh);
   @include flex(flex, row, center, center, nowrap);
 }

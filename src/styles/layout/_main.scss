@@ -1,5 +1,5 @@
 main {
   @include outline;
-  @include box(100vw, 76vh);
+  @include box(100vw, 78vh);
   @include flex(flex, column, center, center, nowrap);
 }

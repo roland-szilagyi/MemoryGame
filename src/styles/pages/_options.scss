@@ -3,6 +3,7 @@
 }
 
 .main__options {
+  @include box(100vw, 78vh);
   @include flexout(column, center, center);
 
   form {

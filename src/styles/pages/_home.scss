@@ -1,9 +1,44 @@
 .header__home {
-  
+
 }
 
 .main__home {
+  @include box(100vw, 78vh);
+  @include flexout(column, space-evenly, center);
 
+  .logo__cont {
+    @include outline;
+    @include box(100vw, auto);
+
+    img {
+      @include box(20rem, auto);
+      margin: 0 auto;
+    }
+  }
+
+  .language__cont {
+    @include outline;
+    @include flex(flex, column, center, center, nowrap);
+
+    .title__cont {
+      width: 100vw;
+      text-align: center;
+    }
+
+    .flags__cont {
+      @include flex(flex, row, center, center, nowrap);
+
+      .flag__cont {
+        @include outline;
+        @include box(30vw, auto);
+
+        img {
+          @include box(4rem, auto);
+          margin: 0 auto;
+        }
+      }
+    }
+  }
 }
 
 .footer__home {
