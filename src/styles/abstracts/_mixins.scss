@@ -7,6 +7,13 @@
   flex-wrap: $flex-wrap;
 }
 
+// FLEXBOX WO DISPLAY
+@mixin flexout($flex-direction, $justify-content, $align-items) {
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
 // BOX
 @mixin box($width, $height) {
   width: $width;

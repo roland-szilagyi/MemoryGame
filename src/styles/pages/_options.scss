@@ -3,7 +3,12 @@
 }
 
 .main__options {
-  color: rebeccapurple;
+  @include flexout(column, center, center);
+
+  form {
+    @include outline;
+    @include flex(flex, column, center, center, nowrap);
+  }
 }
 
 .footer__options {

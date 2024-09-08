@@ -3,6 +3,22 @@
   width: 80vw;
 }
 */
+header h2 {
+  display: none;
+}
+
+main section {
+  display: none;
+}
+
+footer section {
+  display: none;
+}
+
+.active {
+  display: flex;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -51,22 +67,6 @@ p, h1, h2, h3, h4, h5, h6 {
   src: url(../assets/fonts/fontname.ttf);
   font-family: "font-secondary";
 }
-header h2 {
-  display: none;
-}
-
-main section {
-  display: none;
-}
-
-footer section {
-  display: none;
-}
-
-.active {
-  display: flex;
-}
-
 header {
   outline: 1px dashed green;
   width: 100vw;
@@ -101,5 +101,15 @@ main {
 }
 
 .main__options {
-  color: rebeccapurple;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.main__options form {
+  outline: 1px dashed green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
 }/*# sourceMappingURL=main.css.map */

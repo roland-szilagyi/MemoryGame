@@ -16,12 +16,30 @@
   <main>
     <section class="main__home  js-home  active">Home screen</section>
     <section class="main__options  js-options">
-      <div>
-        <h3>stack size:</h3>
-      </div>
-      <div>
-        <h3>difficult:</h3>
-      </div>
+      <form action="#">
+        <div>
+          <h3>stack size:</h3>
+        </div>
+        <div>
+          <input type="radio" id="few" name="stack-size" value="few">
+          <label for="few">few</label>
+          <input type="radio" id="moderate" name="stack-size" value="moderate">
+          <label for="moderate">moderate</label>
+          <input type="radio" id="many" name="stack-size" value="many">
+          <label for="many">many</label>
+        </div>
+        <div>
+          <h3>difficult:</h3>
+        </div>
+        <div>
+          <input type="radio" id="easy" name="difficult" value="easy">
+          <label for="easy">easy</label>
+          <input type="radio" id="medium" name="difficult" value="medium">
+          <label for="medium">medium</label>
+          <input type="radio" id="hard" name="difficult" value="hard">
+          <label for="hard">hard</label>
+        </div>
+      </form>
     </section>
     <section class="main__game  js-game">Game screen</section>
   </main>
