@@ -39,6 +39,7 @@ function runStop() {
 
 /**
  * legenerálja a kártyaértékeket 1-töl 13-ig.
+ * megduplázza a generált számokat.
  * @param Array of '1' ... '13'
  */
 function generateCardNumbers() {
@@ -50,9 +51,18 @@ function generateCardNumbers() {
   return cardNumbers;
 };
 
+/**
+ * megkeveri a megduplázott számokat
+ * @param Array of shuffled numbers 
+ */
 function cardShuffler() {
-
-}
+  let cardNumbers = generateCardNumbers();
+  let cardShuffled = cardNumbers
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+  return cardShuffled;
+};
 
 function cardRender() {
 
