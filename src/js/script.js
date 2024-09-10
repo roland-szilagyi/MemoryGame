@@ -35,11 +35,30 @@ function runStop() {
   pageOptions.forEach(element => element.classList.add('active')); // hozzaadja az active-ot az összes megadott-hoz.
 }
 
-/* ---------- GAME PLAY ---------- */
+/* ---------- OPTIONS DATA EXTRACTION ---------- */
 
 /**
- * legenerálja a kártyaértékeket 1-töl 13-ig.
- * megduplázza a generált számokat.
+ * kinyeri a kiválasztott rádiógombok értékeit
+ * konvertálja az értékeket a megfelelö adattípusra
+ * belerakja az értékeket egy tömbe 'array'
+ * @param Values from DOM elements
+ */
+function getOptionsValues() {
+  let array = [];
+  document.querySelector(".js-btn-start").addEventListener("click", function() {
+    array.push(Number(document.querySelector('input[name="stackSize"]:checked')?.value));
+    array.push(Number(document.querySelector('input[name="difficult"]:checked')?.value));
+    array.push(Boolean(document.querySelector('input[name="cardColor"]:checked')?.value));
+
+    return array;
+  });
+};
+
+/* ---------- CARD NUMBER OPERATIONS ---------- */
+
+/**
+ * legenerálja a kártyaértékeket 1-töl 13-ig
+ * megduplázza a generált számokat
  * @param Array of '1' ... '13'
  */
 function generateCardNumbers() {
@@ -66,14 +85,4 @@ function cardShuffler() {
 
 function cardRender() {
 
-}
-
-console.log( generateCards() );
-
-/* 
-  1. KÁRTYÁK AZ ASZTALRA - ALFELADATOK:
-  - generateCards: legenerál 3 kártyaértéket
-  - cardDoubler: megduplázza a kártyaértékeket
-  - cardShuffler: megkeveri a kártyaértékeket
-  - cardRender: megjeleníti a kártyákat
-*/
+};
