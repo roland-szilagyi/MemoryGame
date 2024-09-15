@@ -35,12 +35,9 @@ body {
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
   overflow-x: hidden;
-  background-color: lavender;
-  /* background-image: url("../../assets/imgs/table-green.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  */
 }
 
 ol, ul {
@@ -206,4 +203,26 @@ main {
 }
 .header__game {
   outline: 1px dashed green;
+}
+
+.main__game {
+  outline: 1px dashed green;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 100vw;
+  height: auto;
+}
+.main__game .cards__cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.main__game .cards__cont .cards {
+  width: 100px;
+  height: auto;
 }/*# sourceMappingURL=main.css.map */

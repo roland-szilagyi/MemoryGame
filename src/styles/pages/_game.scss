@@ -3,7 +3,18 @@
 }
 
 .main__game {
+  @include outline;
+  @include flex(flex, row, center, center, nowrap);
+  @include box(100vw, auto);
 
+  .cards__cont {
+    @include flex(flex, row, center, center, wrap);
+
+    .cards {
+      width: 100px;
+      height: auto;
+    }
+  }
 }
 
 .footer__game {

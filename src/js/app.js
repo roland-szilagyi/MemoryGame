@@ -26,7 +26,7 @@ document.querySelector('.js-btn-next').addEventListener('click', function() {
 });
 
 document.querySelector('.js-btn-start').addEventListener('click', function() {
-  initializeGame();
+  initializeGame(); // <--- ELINDITJA A JÁTÉK INICIALIZÁLÁSÁT
   pageSelect('.js-options', '.js-game');
 });
 
@@ -38,6 +38,15 @@ document.querySelector('.js-btn-home').addEventListener('click', function() {
   pageSelect('.js-options', '.js-home');
 });
 
+/* ---------- KÁRTYÁK RENDERELÉSE ---------- */
+
+function renderCards(value) {
+  for ( let i = 0; i < value; i++ ) {
+    document.querySelector('.js-cards-cont').innerHTML +=
+    '<img src="./src/assets/cards/cardBackBlue.svg" alt="card" class="cards  js-card">'
+  }
+};
+
 /* ---------- INITIALIZE GAME ---------- */
 
 function initializeGame() {
@@ -45,4 +54,5 @@ function initializeGame() {
   updateGameState(options);                 // <--- ÁLLAPOT FRISSÍTÉSE (AZ OPTIONS ÉRTÉKEKKEL)
   generateCardNumbers(gameState.stackSize); // <--- KÁRTYAÉRTÉKEK LEGENERÁLÁSA
   cardShuffler();                           // <--- KÁRTYAÉRTÉKEK MEGKEVERÉSE
+  renderCards(gameState.stackSize);         // <--- KÁRTYÁK RENDERELÉSE
 };
