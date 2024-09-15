@@ -17,7 +17,6 @@ let gameState = {
 
 function updateGameState(updatedValues) {
   Object.assign(gameState, updatedValues);
-  console.log("Updated gameState:", gameState);
 };
 
 /* ---------- BUTTON EVENTS ---------- */
