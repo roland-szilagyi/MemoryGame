@@ -1,9 +1,19 @@
-/* ---------- OPTIONS ÉRTÉKEK RÖGZÍTÉSE ---------- */
-
+/* ---------- OLDALAK VÁLTÁSA ---------- */
 /**
- * Változókba menti a kiválasztott rádiógombok értékeit
- * Konvertálja az értékeket a megfelelő adattípusra
- * Belerakja az értékeket egy tömbbe 'array'
+ * oldalt vált a megadott paraméterek alapján
+ * @param .js-classes
+ */
+
+export function pageSelect(removeClass, addClass) {
+  document.querySelectorAll(removeClass).forEach(element => element.classList.remove('active')); // elveszi az összes active-ot.
+  document.querySelectorAll(addClass).forEach(element => element.classList.add('active')); // hozzaadja az active-ot az összes megadott-hoz.
+};
+
+/* ---------- OPTIONS ÉRTÉKEK RÖGZÍTÉSE ---------- */
+/**
+ * változókba menti a kiválasztott rádiógombok értékeit
+ * konvertálja az értékeket a megfelelő adattípusra
+ * belerakja az értékeket egy tömbbe 'array'
  * @return Array[number, number, boolean]
  */
 export function getOptionsValues() {
@@ -15,34 +25,30 @@ export function getOptionsValues() {
 };
 
 /* ---------- KÁRTYAÉRTÉKEK LEGENERÁLÁSA ---------- */
-
 /**
  * legenerálja a kártyaértékeket 1-töl 13-ig
  * megduplázza a generált számokat
  * @param Array of '1' ... '13'
  */
-function generateCardNumbers() {
+export function generateCardNumbers(number) {
   let cardNumbers = [];
-  for ( let i = 1; i <= 13; i++ ) {
+  for ( let i = 1; i <= number; i++ ) {
     cardNumbers.push(i);
     cardNumbers.push(i);
   };
-  console.log(cardNumbers); // törölni majd
   return cardNumbers;
 };
 
 /* ---------- KÁRTYAÉRTÉKEK MEGKEVERÉSE ---------- */
-
 /**
  * megkeveri a megduplázott számokat
  * @param Array of shuffled numbers 
  */
-function cardShuffler() {
+export function cardShuffler() {
   let cardNumbers = generateCardNumbers();
   let cardShuffled = cardNumbers
     .map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
-    console.log(cardShuffled); // törölni majd
   return cardShuffled;
 };
