@@ -43,7 +43,7 @@
               <input type="radio" class="js-stackSize" id="few" name="stackSize" value="6">
             </label>
             <label for="moderate">moderate
-              <input type="radio" class="js-stackSize" id="moderate" name="stackSize" value="9">
+              <input type="radio" class="js-stackSize" id="moderate" name="stackSize" value="9" checked>
             </label>
             <label for="many">many
               <input type="radio" class="js-stackSize" id="many" name="stackSize" value="13">
@@ -59,7 +59,7 @@
               <input type="radio" id="easy" name="difficult" value="1">
             </label>
             <label for="medium">medium
-              <input type="radio" id="medium" name="difficult" value="2">
+              <input type="radio" id="medium" name="difficult" value="2" checked>
             </label>
             <label for="hard">hard
               <input type="radio" id="hard" name="difficult" value="3">
@@ -72,7 +72,7 @@
           </div>
           <div class="input__cont">
             <label for="blue">blue
-              <input type="radio" id="blue" name="cardColor" value="true">
+              <input type="radio" id="blue" name="cardColor" value="true" checked>
             </label>
             <label for="red">red
               <input type="radio" id="red" name="cardColor" value="false">
@@ -96,10 +96,8 @@
       <button class="js-btn-stop">STOP</button>
     </section>
   </footer>
-  <script src="/src/js/pagesNav.js"></script> <!-- Az oldalak közötti navigáció -->
-  <script src="/src/js/app.js"></script> <!-- Az alapvető játék inicializálás és vezérlés. -->
-  <script src="/src/js/gameLogic.js"></script> <!-- A játék logikájáért felelős kód (például a memória játék szabályai). -->
-  <script src="/src/js/ui.js"></script> <!-- A felhasználói felület frissítésével kapcsolatos kód (például a kártyák megjelenítése). -->
-  <script src="/src/js/utils.js"></script> <!-- Segédfunkciók, amelyek több fájlban is használhatók (például véletlenszerű számok generálása). -->
+  <script type="module" src="./src/js/pagesNav.js"></script>
+  <script type="module" src="./src/js/app.js"></script>
+  <script type="module" src="./src/js/app.js"></script>
 </body>
 </html>
