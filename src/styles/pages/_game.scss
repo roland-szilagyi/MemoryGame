@@ -4,7 +4,7 @@
 
 .main__game {
   @include outline;
-  @include flex(flex, row, center, center, nowrap);
+  @include flexout(row, center, center);
   @include box(100vw, auto);
 
   .cards__cont {

@@ -207,11 +207,9 @@ main {
 
 .main__game {
   outline: 1px dashed green;
-  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;
   width: 100vw;
   height: auto;
 }

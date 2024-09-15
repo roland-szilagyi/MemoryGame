@@ -6,11 +6,11 @@ import { pageSelect } from './script.js';             // <--- import: OLDALAK V�
 /* ---------- ÁLLAPOT ---------- */
 
 let gameState = {
-  stackSize: 9,
-  difficult: 2,
-  cardColor: true,
+  stackSize: 0,
+  difficult: 0,
+  cardColor: false,
   flippedCards: [],
-  pairsFound: 0
+  pairsFound: 0,
 };
 
 /* ---------- ÁLLAPOT FRISSÍTÉSE ---------- */
@@ -41,8 +41,10 @@ document.querySelector('.js-btn-home').addEventListener('click', function() {
 /* ---------- KÁRTYÁK RENDERELÉSE ---------- */
 
 function renderCards(value) {
+  let cardsCont = document.querySelector('.js-cards-cont');
+  cardsCont.innerHTML = '';
   for ( let i = 0; i < value; i++ ) {
-    document.querySelector('.js-cards-cont').innerHTML +=
+    cardsCont.innerHTML +=
     '<img src="./src/assets/cards/cardBackBlue.svg" alt="card" class="cards  js-card">'
   }
 };
