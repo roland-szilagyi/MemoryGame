@@ -40,21 +40,19 @@ document.querySelector('.js-btn-home').addEventListener('click', function() {
 
 /* ---------- KÁRTYÁK RENDERELÉSE ---------- */
 
-function renderCards(value) {
+function renderCards(shuffledCards) {
   let cardsCont = document.querySelector('.js-cards-cont');
   cardsCont.innerHTML = '';
-  for ( let i = 0; i < value; i++ ) {
-    cardsCont.innerHTML +=
-    '<img src="./src/assets/cards/cardBackBlue.svg" alt="card" class="cards  js-card">'
-  }
+  shuffledCards.forEach(cardValue => {
+    cardsCont.innerHTML += `<img src="./src/assets/cards/cardBackBlue.svg" data-card-id="${cardValue}" alt="card" class="cards js-card">`;
+  });
 };
 
 /* ---------- INITIALIZE GAME ---------- */
 
 function initializeGame() {
-  const options = getOptionsValues();       // <--- OPTIONS ÉRTÉKEK RÖGZÍTÉSE
-  updateGameState(options);                 // <--- ÁLLAPOT FRISSÍTÉSE (AZ OPTIONS ÉRTÉKEKKEL)
-  generateCardNumbers(gameState.stackSize); // <--- KÁRTYAÉRTÉKEK LEGENERÁLÁSA
-  cardShuffler(gameState.stackSize);        // <--- KÁRTYAÉRTÉKEK MEGKEVERÉSE
-  renderCards(gameState.stackSize);         // <--- KÁRTYÁK RENDERELÉSE
+  const options = getOptionsValues();                        // <--- OPTIONS ÉRTÉKEK
+  updateGameState(options);                                  // <--- OPTIONS ÉRTÉKEK RÖGZÍTÉSE AZ ÁLLAPOTBA (stackSize, difficult, cardColor)
+  const shuffledCards = cardShuffler(gameState.stackSize);   // <--- MEGKEVERT KÁRTYATÖMB
+  renderCards(shuffledCards);                                // <--- MEGKEVERT KÁRTYATÖMB FELHASZNÁLÁSA A "KÁRTYA RENDERELÉSE" FÜGGVÉNYBEN
 };
