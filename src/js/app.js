@@ -55,6 +55,6 @@ function initializeGame() {
   const options = getOptionsValues();       // <--- OPTIONS ÉRTÉKEK RÖGZÍTÉSE
   updateGameState(options);                 // <--- ÁLLAPOT FRISSÍTÉSE (AZ OPTIONS ÉRTÉKEKKEL)
   generateCardNumbers(gameState.stackSize); // <--- KÁRTYAÉRTÉKEK LEGENERÁLÁSA
-  cardShuffler();                           // <--- KÁRTYAÉRTÉKEK MEGKEVERÉSE
+  cardShuffler(gameState.stackSize);        // <--- KÁRTYAÉRTÉKEK MEGKEVERÉSE
   renderCards(gameState.stackSize);         // <--- KÁRTYÁK RENDERELÉSE
 };

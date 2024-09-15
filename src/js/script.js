@@ -32,7 +32,7 @@ export function getOptionsValues() {
  */
 export function generateCardNumbers(number) {
   let cardNumbers = [];
-  for ( let i = 1; i <= number; i++ ) {
+  for ( let i = 1; i <= number / 2; i++ ) {
     cardNumbers.push(i);
     cardNumbers.push(i);
   };
@@ -44,11 +44,12 @@ export function generateCardNumbers(number) {
  * megkeveri a megduplázott számokat
  * @param Array of shuffled numbers 
  */
-export function cardShuffler() {
-  let cardNumbers = generateCardNumbers();
+export function cardShuffler(number) {
+  let cardNumbers = generateCardNumbers(number);
   let cardShuffled = cardNumbers
     .map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
+    console.log(cardShuffled); // törölni kell
   return cardShuffled;
 };
