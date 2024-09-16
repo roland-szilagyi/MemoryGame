@@ -1,7 +1,7 @@
 import { getOptionsValues } from './script.js';       // <--- import: OPTIONS ÉRTÉKEK RÖGZÍTÉSE
-import { generateCardNumbers } from './script.js';    // <--- import: KÁRTYAÉRTÉKEK LEGENERÁLÁSA
-import { cardShuffler } from './script.js';           // <--- import: KÁRTYAÉRTÉKEK MEGKEVERÉSE
+import { cardShuffler } from './script.js';           // <--- import: KÁRTYAÉRTÉKEK MEGKEVERÉSE EZ AUTOMATIKUSAN IMPORTÁLJA A 'generateCardNumbers' FÜGGVÉNYT IS, MERT AZT HASZNÁLJA A 'cardShuffler' FÜGGVÉNY
 import { pageSelect } from './script.js';             // <--- import: OLDALAK VÁLTÁSA
+import { cardTurnEvents } from './script.js';
 
 /* ---------- ÁLLAPOT ---------- */
 
@@ -19,7 +19,7 @@ function updateGameState(updatedValues) {
   Object.assign(gameState, updatedValues);
 };
 
-/* ---------- BUTTON EVENTS ---------- */
+/* ---------- GOMBOK ESEMENYFIGYELÖI ---------- */
 
 document.querySelector('.js-btn-next').addEventListener('click', function() {
   pageSelect('.js-home', '.js-options');
@@ -55,4 +55,5 @@ function initializeGame() {
   updateGameState(options);                                  // <--- OPTIONS ÉRTÉKEK RÖGZÍTÉSE AZ ÁLLAPOTBA (stackSize, difficult, cardColor)
   const shuffledCards = cardShuffler(gameState.stackSize);   // <--- MEGKEVERT KÁRTYATÖMB
   renderCards(shuffledCards);                                // <--- MEGKEVERT KÁRTYATÖMB FELHASZNÁLÁSA A "KÁRTYA RENDERELÉSE" FÜGGVÉNYBEN
+  cardTurnEvents();                                          // <--- 
 };

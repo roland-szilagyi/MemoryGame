@@ -53,3 +53,23 @@ export function cardShuffler(number) {
     console.log(cardShuffled); // törölni kell
   return cardShuffled;
 };
+
+/* ---------- KÁRTYA FORDÍTÁS ESEMÉNYFIGYELÖI ---------- */
+
+export function cardTurnEvents() {
+  let cards = document.querySelectorAll('.js-card');
+  cards.forEach(card => {
+    card.addEventListener('click', cardTurner)
+  });
+};
+
+/* ---------- KÁRTYA FORDÍTÓ ---------- */
+
+export function cardTurner(event) {
+  // Az eseményt kiváltó elemhez való hozzáférés
+  const clickedCard = event.target;
+  // Kiolvassuk a data-card-id értékét
+  const cardId = clickedCard.dataset.cardId;
+  // Az src attribútum frissítése a card-id alapján
+  clickedCard.src = `./src/assets/cards/${cardId}.svg`;
+};
