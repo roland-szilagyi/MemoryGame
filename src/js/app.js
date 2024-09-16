@@ -1,7 +1,7 @@
 import { getOptionsValues } from './script.js';       // <--- import: OPTIONS ÉRTÉKEK RÖGZÍTÉSE
 import { cardShuffler } from './script.js';           // <--- import: KÁRTYAÉRTÉKEK MEGKEVERÉSE EZ AUTOMATIKUSAN IMPORTÁLJA A 'generateCardNumbers' FÜGGVÉNYT IS, MERT AZT HASZNÁLJA A 'cardShuffler' FÜGGVÉNY
 import { pageSelect } from './script.js';             // <--- import: OLDALAK VÁLTÁSA
-import { cardTurnEvents } from './script.js';
+import { cardTurnEvents } from './script.js';         // <--- import: KÁRTYA FORDÍTÁS ESEMÉNYFIGYELÖI
 
 /* ---------- ÁLLAPOT ---------- */
 
@@ -55,5 +55,5 @@ function initializeGame() {
   updateGameState(options);                                  // <--- OPTIONS ÉRTÉKEK RÖGZÍTÉSE AZ ÁLLAPOTBA (stackSize, difficult, cardColor)
   const shuffledCards = cardShuffler(gameState.stackSize);   // <--- MEGKEVERT KÁRTYATÖMB
   renderCards(shuffledCards);                                // <--- MEGKEVERT KÁRTYATÖMB FELHASZNÁLÁSA A "KÁRTYA RENDERELÉSE" FÜGGVÉNYBEN
-  cardTurnEvents();                                          // <--- 
+  cardTurnEvents();                                          // <--- ESEMÉNYFIGYELÖK A KÁRTYAFORDÍTÁSHOZ
 };
