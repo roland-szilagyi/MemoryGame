@@ -1,14 +1,15 @@
-import { getOptionsValues } from './script.js';       // <--- import: OPTIONS ÉRTÉKEK RÖGZÍTÉSE
-import { cardShuffler } from './script.js';           // <--- import: KÁRTYAÉRTÉKEK MEGKEVERÉSE EZ AUTOMATIKUSAN IMPORTÁLJA A 'generateCardNumbers' FÜGGVÉNYT IS, MERT AZT HASZNÁLJA A 'cardShuffler' FÜGGVÉNY
-import { pageSelect } from './script.js';             // <--- import: OLDALAK VÁLTÁSA
-import { cardTurnEvents } from './script.js';         // <--- import: KÁRTYA FORDÍTÁS ESEMÉNYFIGYELÖI
+import { getOptionsValues } from './script.js';
+import { cardShuffler } from './script.js';
+import { renderCards } from './script.js'
+import { pageSelect } from './script.js';
+import { cardTurnEvents } from './script.js';
 
 /* ---------- ÁLLAPOT ---------- */
 
 let gameState = {
   stackSize: 0,
   difficult: 0,
-  cardColor: false,
+  cardColor: '',
   flippedCards: [],
   pairsFound: 0,
 };
@@ -26,7 +27,7 @@ document.querySelector('.js-btn-next').addEventListener('click', function() {
 });
 
 document.querySelector('.js-btn-start').addEventListener('click', function() {
-  initializeGame(); // <--- ELINDITJA A JÁTÉK INICIALIZÁLÁSÁT
+  initializeGame();
   pageSelect('.js-options', '.js-game');
 });
 
@@ -38,22 +39,12 @@ document.querySelector('.js-btn-home').addEventListener('click', function() {
   pageSelect('.js-options', '.js-home');
 });
 
-/* ---------- KÁRTYÁK RENDERELÉSE ---------- */
-
-function renderCards(shuffledCards) {
-  let cardsCont = document.querySelector('.js-cards-cont');
-  cardsCont.innerHTML = '';
-  shuffledCards.forEach(cardValue => {
-    cardsCont.innerHTML += `<img src="./src/assets/cards/cardBackBlue.svg" data-card-id="${cardValue}" alt="card" class="cards js-card">`;
-  });
-};
-
-/* ---------- INITIALIZE GAME ---------- */
+/* ---------- JÁTÉK INICIALIZÁLÁSA ---------- */
 
 function initializeGame() {
   const options = getOptionsValues();                        // <--- OPTIONS ÉRTÉKEK
   updateGameState(options);                                  // <--- OPTIONS ÉRTÉKEK RÖGZÍTÉSE AZ ÁLLAPOTBA (stackSize, difficult, cardColor)
   const shuffledCards = cardShuffler(gameState.stackSize);   // <--- MEGKEVERT KÁRTYATÖMB
-  renderCards(shuffledCards);                                // <--- MEGKEVERT KÁRTYATÖMB FELHASZNÁLÁSA A "KÁRTYA RENDERELÉSE" FÜGGVÉNYBEN
+  renderCards(shuffledCards, gameState.cardColor);                                // <--- MEGKEVERT KÁRTYATÖMB FELHASZNÁLÁSA A "KÁRTYA RENDERELÉSE" FÜGGVÉNYBEN
   cardTurnEvents();                                          // <--- ESEMÉNYFIGYELÖK A KÁRTYAFORDÍTÁSHOZ
 };

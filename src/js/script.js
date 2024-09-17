@@ -19,9 +19,15 @@ export function pageSelect(removeClass, addClass) {
 export function getOptionsValues() {
   const stackSize = Number(document.querySelector('input[name="stackSize"]:checked')?.value);
   const difficult = Number(document.querySelector('input[name="difficult"]:checked')?.value);
-  const cardColor = Boolean(document.querySelector('input[name="cardColor"]:checked')?.value);
+  const colorIsBlue = document.querySelector('#blue').checked;
 
-  return { stackSize, difficult, cardColor }
+  let cardColor;
+  if (colorIsBlue) {
+    cardColor = 'Blue';
+  } else {
+    cardColor = 'Red';
+  };
+  return { stackSize, difficult, cardColor };
 };
 
 /* ---------- KÁRTYAÉRTÉKEK LEGENERÁLÁSA ---------- */
@@ -52,6 +58,16 @@ export function cardShuffler(number) {
     .map(({ value }) => value);
     console.log(cardShuffled); // törölni kell
   return cardShuffled;
+};
+
+/* ---------- KÁRTYÁK RENDERELÉSE ---------- */
+
+export function renderCards(shuffledCards, cardColor) {
+  let cardsCont = document.querySelector('.js-cards-cont');
+  cardsCont.innerHTML = '';
+  shuffledCards.forEach(cardValue => {
+    cardsCont.innerHTML += `<img src="./src/assets/cards/cardBack${cardColor}.svg" data-card-id="${cardValue}" alt="card" class="cards js-card">`;
+  });
 };
 
 /* ---------- KÁRTYA FORDÍTÁS ESEMÉNYFIGYELÖI ---------- */
