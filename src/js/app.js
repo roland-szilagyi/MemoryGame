@@ -1,24 +1,8 @@
 import { getOptionsValues } from './script.js';
-import { cardShuffler } from './script.js';
+import { generateCardNumbers } from './script.js';
 import { renderCards } from './script.js'
 import { pageSelect } from './script.js';
 import { cardTurnEvents } from './script.js';
-
-/* ---------- ÁLLAPOT ---------- */
-
-let gameState = {
-  stackSize: 0,
-  difficult: 0,
-  cardColor: '',
-  flippedCards: [],
-  pairsFound: 0,
-};
-
-/* ---------- ÁLLAPOT FRISSÍTÉSE ---------- */
-
-function updateGameState(updatedValues) {
-  Object.assign(gameState, updatedValues);
-};
 
 /* ---------- GOMBOK ESEMENYFIGYELÖI ---------- */
 
@@ -27,7 +11,7 @@ document.querySelector('.js-btn-next').addEventListener('click', function() {
 });
 
 document.querySelector('.js-btn-start').addEventListener('click', function() {
-  initializeGame();
+  initializeGame(); /* --- JÀTÉK INDÍTÁSA --- */
   pageSelect('.js-options', '.js-game');
 });
 
@@ -39,12 +23,29 @@ document.querySelector('.js-btn-home').addEventListener('click', function() {
   pageSelect('.js-options', '.js-home');
 });
 
+/* ---------- ÁLLAPOT LÉTREHOZÁSA ---------- */
+
+let gameState = {
+  stackSize: 0,
+  difficult: 0,
+  cardColor: '',
+  flippedCards: [],
+  pairsFound: 0,
+};
+
+/* ---------- ÁLLAPOT FRISSÍTÉSE ( START GOMB ) ---------- */
+
+function updateGameState(updatedValues) {
+  Object.assign(gameState, updatedValues);
+};
+
 /* ---------- JÁTÉK INICIALIZÁLÁSA ---------- */
 
 function initializeGame() {
   const options = getOptionsValues();                        // <--- OPTIONS ÉRTÉKEK
   updateGameState(options);                                  // <--- OPTIONS ÉRTÉKEK RÖGZÍTÉSE AZ ÁLLAPOTBA (stackSize, difficult, cardColor)
-  const shuffledCards = cardShuffler(gameState.stackSize);   // <--- MEGKEVERT KÁRTYATÖMB
-  renderCards(shuffledCards, gameState.cardColor);                                // <--- MEGKEVERT KÁRTYATÖMB FELHASZNÁLÁSA A "KÁRTYA RENDERELÉSE" FÜGGVÉNYBEN
+
+  const shuffledCards = generateCardNumbers(gameState.stackSize);   // <--- MEGKEVERT KÁRTYATÖMB
+  renderCards(shuffledCards, gameState.cardColor);           // <--- MEGKEVERT KÁRTYATÖMB FELHASZNÁLÁSA A "KÁRTYA RENDERELÉSE" FÜGGVÉNYBEN
   cardTurnEvents();                                          // <--- ESEMÉNYFIGYELÖK A KÁRTYAFORDÍTÁSHOZ
 };

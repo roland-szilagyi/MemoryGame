@@ -34,7 +34,9 @@ export function getOptionsValues() {
 /**
  * legenerálja a kártyaértékeket 1-töl 13-ig
  * megduplázza a generált számokat
+ * megkeveri a megduplázott számokat
  * @param Array of '1' ... '13'
+ * @return Array of shuffled numbers 
  */
 export function generateCardNumbers(number) {
   let cardNumbers = [];
@@ -42,16 +44,6 @@ export function generateCardNumbers(number) {
     cardNumbers.push(i);
     cardNumbers.push(i);
   };
-  return cardNumbers;
-};
-
-/* ---------- KÁRTYAÉRTÉKEK MEGKEVERÉSE ---------- */
-/**
- * megkeveri a megduplázott számokat
- * @param Array of shuffled numbers 
- */
-export function cardShuffler(number) {
-  let cardNumbers = generateCardNumbers(number);
   let cardShuffled = cardNumbers
     .map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
@@ -62,6 +54,10 @@ export function cardShuffler(number) {
 
 /* ---------- KÁRTYÁK RENDERELÉSE ---------- */
 
+/**
+ * a megkevert számokat behelyettesítve legenerálja html-ben az 'img' elemeket
+ * @param Array of 
+ */
 export function renderCards(shuffledCards, cardColor) {
   let cardsCont = document.querySelector('.js-cards-cont');
   cardsCont.innerHTML = '';
@@ -81,6 +77,8 @@ export function cardTurnEvents() {
 
 /* ---------- KÁRTYA FORDÍTÓ ---------- */
 
+
+
 export function cardTurner(event) {
   // Az eseményt kiváltó elemhez való hozzáférés
   const clickedCard = event.target;
@@ -88,4 +86,12 @@ export function cardTurner(event) {
   const cardId = clickedCard.dataset.cardId;
   // Az src attribútum frissítése a card-id alapján
   clickedCard.src = `./src/assets/cards/${cardId}.svg`;
+
+  console.log(cardId);
+  return cardId;
 };
+
+/* ---------- KÁRTYA ÉRTÉK PUSHOLÓ ---------- */
+
+
+/* ---------- KÁRTYA ÉRTÉK ÖSSZEHASONLÍTÓ ---------- */
