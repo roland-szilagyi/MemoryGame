@@ -3,6 +3,7 @@ import { generateCardNumbers } from './script.js';
 import { renderCards } from './script.js'
 import { pageSelect } from './script.js';
 import { cardTurnEvents } from './script.js';
+import { pushToFlippedCards } from './script.js';
 
 /* ---------- GOMBOK ESEMENYFIGYELÖI ---------- */
 
@@ -25,7 +26,7 @@ document.querySelector('.js-btn-home').addEventListener('click', function() {
 
 /* ---------- ÁLLAPOT LÉTREHOZÁSA ---------- */
 
-let gameState = {
+export let gameState = {
   stackSize: 0,
   difficult: 0,
   cardColor: '',
@@ -42,10 +43,9 @@ function updateGameState(updatedValues) {
 /* ---------- JÁTÉK INICIALIZÁLÁSA ---------- */
 
 function initializeGame() {
-  const options = getOptionsValues();                        // <--- OPTIONS ÉRTÉKEK
-  updateGameState(options);                                  // <--- OPTIONS ÉRTÉKEK RÖGZÍTÉSE AZ ÁLLAPOTBA (stackSize, difficult, cardColor)
-
+  const options = getOptionsValues();                               // <--- OPTIONS ÉRTÉKEK
+  updateGameState(options);                                         // <--- OPTIONS ÉRTÉKEK RÖGZÍTÉSE AZ ÁLLAPOTBA (stackSize, difficult, cardColor)
   const shuffledCards = generateCardNumbers(gameState.stackSize);   // <--- MEGKEVERT KÁRTYATÖMB
-  renderCards(shuffledCards, gameState.cardColor);           // <--- MEGKEVERT KÁRTYATÖMB FELHASZNÁLÁSA A "KÁRTYA RENDERELÉSE" FÜGGVÉNYBEN
-  cardTurnEvents();                                          // <--- ESEMÉNYFIGYELÖK A KÁRTYAFORDÍTÁSHOZ
+  renderCards(shuffledCards, gameState.cardColor);                  // <--- MEGKEVERT KÁRTYATÖMB FELHASZNÁLÁSA A "KÁRTYA RENDERELÉSE" FÜGGVÉNYBEN
+  cardTurnEvents();                                                 // <--- ESEMÉNYFIGYELÖK AKTIVÁLÁSA A KÁRTYAFORDÍTÁSHOZ
 };

@@ -1,3 +1,5 @@
+import { gameState } from './app.js';
+
 /* ---------- OLDALAK VÁLTÁSA ---------- */
 /**
  * oldalt vált a megadott paraméterek alapján
@@ -30,7 +32,7 @@ export function getOptionsValues() {
   return { stackSize, difficult, cardColor };
 };
 
-/* ---------- KÁRTYAÉRTÉKEK LEGENERÁLÁSA ---------- */
+/* ---------- KÁRTYAÉRTÉKEK LEGENERÁLÁSA ÉS MEGKEVERÉSE ---------- */
 /**
  * legenerálja a kártyaértékeket 1-töl 13-ig
  * megduplázza a generált számokat
@@ -53,9 +55,9 @@ export function generateCardNumbers(number) {
 };
 
 /* ---------- KÁRTYÁK RENDERELÉSE ---------- */
-
 /**
  * a megkevert számokat behelyettesítve legenerálja html-ben az 'img' elemeket
+ * A 'cardColor' értéke alapján generálja a megfelelö kártyaszínt
  * @param Array of 
  */
 export function renderCards(shuffledCards, cardColor) {
@@ -67,7 +69,6 @@ export function renderCards(shuffledCards, cardColor) {
 };
 
 /* ---------- KÁRTYA FORDÍTÁS ESEMÉNYFIGYELÖI ---------- */
-
 export function cardTurnEvents() {
   let cards = document.querySelectorAll('.js-card');
   cards.forEach(card => {
@@ -76,22 +77,33 @@ export function cardTurnEvents() {
 };
 
 /* ---------- KÁRTYA FORDÍTÓ ---------- */
-
-
-
 export function cardTurner(event) {
-  // Az eseményt kiváltó elemhez való hozzáférés
   const clickedCard = event.target;
-  // Kiolvassuk a data-card-id értékét
   const cardId = clickedCard.dataset.cardId;
-  // Az src attribútum frissítése a card-id alapján
   clickedCard.src = `./src/assets/cards/${cardId}.svg`;
 
-  console.log(cardId);
-  return cardId;
+  pushToFlippedCards(cardId);
 };
 
 /* ---------- KÁRTYA ÉRTÉK PUSHOLÓ ---------- */
+export function pushToFlippedCards(cardId) {
+  let flippedCardsArray = gameState.flippedCards;
+  flippedCardsArray.push(cardId);
+  console.log(gameState.flippedCards);
+  console.log(gameState.flippedCards.leng);
 
+  flippedCardsCheck();
+};
+
+/* ---------- MEGFORDÍTOTT KÁRTYÁK TÖMB ELLENÖRZÉSE ---------- */
+export function flippedCardsCheck() {
+  let flippedCardsArray = gameState.flippedCards;
+  if (flippedCardsArray.length !== 2) {
+    console.log('Még nincs benne 2');
+  } else if (flippedCardsArray.length === 2) {
+    console.log("Ez 2");
+    gameState.flippedCards = [];
+  }
+};
 
 /* ---------- KÁRTYA ÉRTÉK ÖSSZEHASONLÍTÓ ---------- */
