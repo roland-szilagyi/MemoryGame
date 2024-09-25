@@ -1,16 +1,5 @@
 import { gameState } from './app.js';
 
-/* ---------- OLDALAK VÁLTÁSA ---------- */
-/**
- * oldalt vált a megadott paraméterek alapján
- * @param .js-classes
- */
-
-export function pageSelect(removeClass, addClass) {
-  document.querySelectorAll(removeClass).forEach(element => element.classList.remove('active')); // elveszi az összes active-ot.
-  document.querySelectorAll(addClass).forEach(element => element.classList.add('active')); // hozzaadja az active-ot az összes megadott-hoz.
-};
-
 /* ---------- OPTIONS ÉRTÉKEK RÖGZÍTÉSE ---------- */
 /**
  * változókba menti a kiválasztott rádiógombok értékeit
@@ -103,7 +92,14 @@ export function flippedCardsCheck() {
   } else if (flippedCardsArray.length === 2) {
     console.log("Ez 2");
     gameState.flippedCards = [];
+
+    if ( flippedCardsArray[0] === flippedCardsArray[1] ) {
+      console.log('eltaláltad!')
+    }
   }
 };
 
 /* ---------- KÁRTYA ÉRTÉK ÖSSZEHASONLÍTÓ ---------- */
+export function haNemPasszol() {
+
+}

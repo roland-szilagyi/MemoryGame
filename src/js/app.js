@@ -1,27 +1,27 @@
 import { getOptionsValues } from './script.js';
 import { generateCardNumbers } from './script.js';
 import { renderCards } from './script.js'
-import { pageSelect } from './script.js';
+import { pageNavigation } from './pageNavigation.js';
 import { cardTurnEvents } from './script.js';
 import { pushToFlippedCards } from './script.js';
 
 /* ---------- GOMBOK ESEMENYFIGYELÖI ---------- */
 
 document.querySelector('.js-btn-next').addEventListener('click', function() {
-  pageSelect('.js-home', '.js-options');
+  pageNavigation('.js-home', '.js-options');
 });
 
 document.querySelector('.js-btn-start').addEventListener('click', function() {
   initializeGame(); /* --- JÀTÉK INDÍTÁSA --- */
-  pageSelect('.js-options', '.js-game');
+  pageNavigation('.js-options', '.js-game');
 });
 
 document.querySelector('.js-btn-stop').addEventListener('click', function() {
-  pageSelect('.js-game', '.js-options');
+  pageNavigation('.js-game', '.js-options');
 });
 
 document.querySelector('.js-btn-home').addEventListener('click', function() {
-  pageSelect('.js-options', '.js-home');
+  pageNavigation('.js-options', '.js-home');
 });
 
 /* ---------- ÁLLAPOT LÉTREHOZÁSA ---------- */
