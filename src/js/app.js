@@ -1,9 +1,8 @@
-import { getOptionsValues } from './script.js';
-import { generateCardNumbers } from './script.js';
-import { renderCards } from './script.js'
+import { getOptionsValues } from './cardGenerator.js';
+import { generateCardNumbers } from './cardGenerator.js';
+import { renderCards } from './cardGenerator.js'
 import { pageNavigation } from './pageNavigation.js';
-import { cardTurnEvents } from './script.js';
-import { pushToFlippedCards } from './script.js';
+import { cardActions } from './cardActions.js';
 
 /* ---------- GOMBOK ESEMENYFIGYELÖI ---------- */
 
@@ -47,5 +46,6 @@ function initializeGame() {
   updateGameState(options);                                         // <--- OPTIONS ÉRTÉKEK RÖGZÍTÉSE AZ ÁLLAPOTBA (stackSize, difficult, cardColor)
   const shuffledCards = generateCardNumbers(gameState.stackSize);   // <--- MEGKEVERT KÁRTYATÖMB
   renderCards(shuffledCards, gameState.cardColor);                  // <--- MEGKEVERT KÁRTYATÖMB FELHASZNÁLÁSA A "KÁRTYA RENDERELÉSE" FÜGGVÉNYBEN
-  cardTurnEvents();                                                 // <--- ESEMÉNYFIGYELÖK AKTIVÁLÁSA A KÁRTYAFORDÍTÁSHOZ
+  
+  cardActions();                                                    // <--- ESEMÉNYFIGYELÖK AKTIVÁLÁSA A KÁRTYAFORDÍTÁSHOZ
 };
