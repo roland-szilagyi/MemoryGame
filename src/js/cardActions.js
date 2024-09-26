@@ -14,32 +14,39 @@ export function cardTurner(event) {
   const cardId = clickedCard.dataset.cardId;
   clickedCard.src = `./src/assets/cards/${cardId}.svg`;
 
+  clickedCard.removeEventListener('click', cardTurner);
   pushToFlippedCards(cardId);
 };
 
-/* ---------- KÁRTYA ÉRTÉK PUSHOLÓ ---------- */
+/* ---------- MEGFORDÍTOTT KÁRTYÁK TÖMB (PUSH) ---------- */
 export function pushToFlippedCards(cardId) {
   let flippedCardsArray = gameState.flippedCards;
   flippedCardsArray.push(cardId);
   console.log(gameState.flippedCards);
   console.log(gameState.flippedCards.leng);
 
-  flippedCardsCheck();
+  flippedCardsLengthCheck();
 };
 
-/* ---------- MEGFORDÍTOTT KÁRTYÁK TÖMB ELLENÖRZÉSE ---------- */
-export function flippedCardsCheck() {
+/* ---------- MEGFORDÍTOTT KÁRTYÁK TÖMB (HOSSZ-ELLENÖRZÉS) ---------- */
+export function flippedCardsLengthCheck() {
   let flippedCardsArray = gameState.flippedCards;
-  if (flippedCardsArray.length !== 2) {
-    console.log('Még nincs benne 2');
-  } else if (flippedCardsArray.length === 2) {
-    console.log("Ez 2");
+  if ( flippedCardsArray.length === 2 ) {
+    flippedCardsValuesCheck();
     gameState.flippedCards = [];
-
-    if ( flippedCardsArray[0] === flippedCardsArray[1] ) {
-      console.log('eltaláltad!')
-    }
   }
 };
 
-/* ---------- KÁRTYA ÉRTÉK ÖSSZEHASONLÍTÓ ---------- */
+/* ---------- MEGFORDÍTOTT KÁRTYÁK TÖMB (EGYEZÉS-ELLENÖRZÉS) ---------- */
+export function flippedCardsValuesCheck() {
+  let flippedCardsArray = gameState.flippedCards;
+  if ( flippedCardsArray[0] === flippedCardsArray[1] ) {
+    console.log(flippedCardsArray)
+    console.log('eltaláltad!');
+  }
+};
+
+/* ---------- EVENT TÖRLÉSE ---------- */
+export function eventRemover() {
+
+};
