@@ -9,7 +9,7 @@ export function cardActions() {
 };
 
 /* ---------- KÁRTYA FORDÍTÓ ---------- */
-export function cardTurner(event) {
+function cardTurner(event) {
   const clickedCard = event.target;
   const cardId = clickedCard.dataset.cardId;
   clickedCard.src = `./src/assets/cards/${cardId}.svg`;
@@ -19,7 +19,7 @@ export function cardTurner(event) {
 };
 
 /* ---------- MEGFORDÍTOTT KÁRTYÁK TÖMB (PUSH) ---------- */
-export function pushToFlippedCards(cardId) {
+function pushToFlippedCards(cardId) {
   let flippedCardsArray = gameState.flippedCards;
   flippedCardsArray.push(cardId);
   console.log(gameState.flippedCards);
@@ -29,24 +29,26 @@ export function pushToFlippedCards(cardId) {
 };
 
 /* ---------- MEGFORDÍTOTT KÁRTYÁK TÖMB (HOSSZ-ELLENÖRZÉS) ---------- */
-export function flippedCardsLengthCheck() {
+function flippedCardsLengthCheck() {
   let flippedCardsArray = gameState.flippedCards;
   if ( flippedCardsArray.length === 2 ) {
     flippedCardsValuesCheck();
     gameState.flippedCards = [];
-  }
+  };
 };
 
 /* ---------- MEGFORDÍTOTT KÁRTYÁK TÖMB (EGYEZÉS-ELLENÖRZÉS) ---------- */
-export function flippedCardsValuesCheck() {
+function flippedCardsValuesCheck() {
   let flippedCardsArray = gameState.flippedCards;
   if ( flippedCardsArray[0] === flippedCardsArray[1] ) {
     console.log(flippedCardsArray)
-    console.log('eltaláltad!');
-  }
+
+    pairsFoundCounter();
+  };
 };
 
-/* ---------- EVENT TÖRLÉSE ---------- */
-export function eventRemover() {
-
+/* ---------- TALÁLT PÁROK NÖVELÉSE ---------- */
+function pairsFoundCounter() {
+  gameState.pairsFound += 1;
+  console.log(gameState.pairsFound);
 };
