@@ -14,6 +14,8 @@ function cardTurner(event) {
   const cardId = clickedCard.dataset.cardId;
   clickedCard.src = `./src/assets/cards/${cardId}.svg`;
 
+  clickedCard.classList.add('flipped');
+
   clickedCard.removeEventListener('click', cardTurner);
   pushToFlippedCards(cardId);
 };
@@ -44,11 +46,23 @@ function flippedCardsValuesCheck() {
     console.log(flippedCardsArray)
 
     pairsFoundCounter();
-  };
+  }
+  else {
+    reka()
+  }
 };
 
 /* ---------- TALÁLT PÁROK NÖVELÉSE ---------- */
 function pairsFoundCounter() {
   gameState.pairsFound += 1;
   console.log(gameState.pairsFound);
+};
+
+function reka() {
+  let flippedCards = document.querySelectorAll('.flipped');
+  let source = src=`./src/assets/cards/${gameState.cardColor}.svg`;
+  flippedCards.forEach(element => src=`./src/assets/cards/${gameState.cardColor}.svg`);
+  flippedCards.forEach(element => element.classList.remove('flipped'));
+  
+  
 };

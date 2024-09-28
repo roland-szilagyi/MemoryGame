@@ -1,3 +1,5 @@
+import { gameState } from "./app.js";
+
 /* ---------- OPTIONS ÉRTÉKEK RÖGZÍTÉSE ---------- */
 /**
  * változókba menti a kiválasztott rádiógombok értékeit
@@ -16,7 +18,10 @@ export function getOptionsValues() {
   } else {
     cardColor = 'Red';
   };
-  return { stackSize, difficult, cardColor };
+
+  gameState.stackSize = stackSize;
+  gameState.difficulty = difficult;
+  gameState.cardColor = cardColor;
 };
 
 /* ---------- KÁRTYAÉRTÉKEK LEGENERÁLÁSA ÉS MEGKEVERÉSE ---------- */
