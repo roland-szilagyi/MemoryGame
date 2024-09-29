@@ -57,6 +57,6 @@ export function renderCards() {
 
   cardsCont.innerHTML = '';
   gameState.shuffledCards.forEach(cardValue => {
-    cardsCont.innerHTML += `<img src="./src/assets/cards/cardBack${cardColor}.svg" data-card-id="${cardValue}" alt="card" class="cards js-card">`;
+    cardsCont.innerHTML += `<img src="./src/assets/cards/cardBack${cardColor}.svg" data-card-id="${cardValue}" alt="card" class="cards  js-card  inactive-card">`;
   });
 };

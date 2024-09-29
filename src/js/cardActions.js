@@ -8,31 +8,33 @@ import { gameState } from './app.js';
  * @version 1.0.0
  */
 export function cardActions() {
-  let cards = document.querySelectorAll('.js-card');
+  let cards = document.querySelectorAll('.inactive-card');
   cards.forEach(card => {
-    card.addEventListener('click', cardTurner)
+    card.addEventListener('click', cardTurnEvent)
   });
 };
 
-/** ---------- CARD TURNER ----------
- * kezeli a kártyafordítás eseményét
+/** ---------- CARD TURN EVENT ----------
+ * kártyára való kattintáskor ha a kártya és párja még nem lett megtalálva ('done'):
  * kicseréli a kártya képét a kattintott kártya ID-je alapján
- * hozzáadja a 'flipped' osztályt
+ * kicseréli az 'inactive-card' osztályt 'active-card'-ra
  * eltávolítja az eseményfigyelőt, hogy ne lehessen újra megfordítani
- * meghívja a 'pushToFlippedCards' függvényt
+ * meghívja a 'pushToFlippedCards' függvényt a 'cardId' attributummal
  * 
  * @param {Event} event - esemény, amelyet a kártyára kattintás váltott ki
  * @returns {void}
  * @version 1.0.0
  */
-function cardTurner(event) {
+function cardTurnEvent(event) {
   const clickedCard = event.target;
   const cardId = clickedCard.dataset.cardId;
-  clickedCard.src = `./src/assets/cards/${cardId}.svg`;
 
-  clickedCard.classList.add('flipped');
+  if ( !clickedCard.classList.contains('done') ) {
+    clickedCard.src = `./src/assets/cards/${cardId}.svg`;
+    clickedCard.classList.replace('inactive-card', 'active-card');
+    clickedCard.removeEventListener('click', cardTurnEvent);
+  };
 
-  clickedCard.removeEventListener('click', cardTurner);
   pushToFlippedCards(cardId);
 };
 
@@ -47,13 +49,15 @@ function cardTurner(event) {
  */
 function pushToFlippedCards(value) {
   gameState.flippedCards.push(value);
-
+  console.log(gameState.flippedCards)
   flippedCardsLengthCheck();
 };
 
 /** ---------- FLIPPED CARDS ARRAY (LENGTH-CHECK) ----------
  * Ellenőrzi a 'flippedCards' tömbjének hosszát
- * Ha a tömb hossza 2, akkor meghívja a 'flippedCardsValuesCheck' függvényt
+ * Ha a tömb hossza 2, akkor:
+ * eltávolítja az összes kártyafordító eseményfigyelöt (hogy egyszerre 2-nél több kártya ne fordulhasson fel)
+ * meghívja a 'flippedCardsValuesCheck' függvényt
  * majd kiüríti a 'flippedCards' tömböt
  *
  * @returns {void}
@@ -61,23 +65,50 @@ function pushToFlippedCards(value) {
  */
 function flippedCardsLengthCheck() {
   if ( gameState.flippedCards.length === 2 ) {
+    
+    const allCards = document.querySelectorAll('.cards');
+    allCards.forEach(card => {
+      card.removeEventListener('click', cardTurnEvent);
+    });
+    
     flippedCardsValuesCheck();
     gameState.flippedCards = [];
   };
 };
 
+
+
 /** ---------- FLIPPED CARDS ARRAY (VALUES-CHECK) ----------
  * ellenőrzi hogy a megfordított kártyák értékei megegyeznek-e
- * ha igen akkor meghívja a 'pairsFoundCounter' függvényt
+ * ha igen akkor:
+ * a megtalált kártyapárok osztályait 'done'-ra cseréli
+ * meghívja a 'pairsFoundCounter' függvényt
+ * visszaadja a kártyafordító eseménykezelöket
+ * ha nem akkor:
+ * megadott idöintervallum után az összes aktív kártya visszafordul az eredeti hátoldalára
  * 
  * @returns {void}
  * @version 1.0.0
  */
 function flippedCardsValuesCheck() {
-  if ( gameState.flippedCards[0] === gameState.flippedCards[1] ) {
-    console.log(gameState.flippedCards)
-
+  if (gameState.flippedCards[0] === gameState.flippedCards[1]) {
+    const activeCards = document.querySelectorAll('.active-card');
+    activeCards.forEach(card => {
+      card.classList.replace('active-card', 'done');
+    });
+    console.log(gameState.flippedCards);
     pairsFoundCounter();
+    cardActions();
+  }
+  else {
+    setTimeout(() => {
+      const activeCards = document.querySelectorAll('.active-card');
+      activeCards.forEach(card => {
+        card.classList.replace('active-card', 'inactive-card');
+        card.src = `./src/assets/cards/cardBack${gameState.cardColor}.svg`;
+      });
+      cardActions();
+    }, 500);
   };
 };
 
