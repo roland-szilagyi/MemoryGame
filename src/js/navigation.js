@@ -11,19 +11,19 @@ import { gameState, initializeGame } from './app.js';
  * @version 1.0.0
  */
 
-export function pageNavigationEvents() {
+export function navigationEvents() {
   document.querySelector('.js-btn-next').addEventListener('click', function() {
-    pageNavigation('.js-home', '.js-options');
+    navigation('.js-home', '.js-options');
   });
   document.querySelector('.js-btn-start').addEventListener('click', function() {
     initializeGame(); /* --- GAME START --- */
-    pageNavigation('.js-options', '.js-game');
+    navigation('.js-options', '.js-game');
   });
   document.querySelector('.js-btn-stop').addEventListener('click', function() {
-    pageNavigation('.js-game', '.js-options');
+    navigation('.js-game', '.js-options');
   });
   document.querySelector('.js-btn-home').addEventListener('click', function() {
-    pageNavigation('.js-options', '.js-home');
+    navigation('.js-options', '.js-home');
   });
 };
 
@@ -38,7 +38,7 @@ export function pageNavigationEvents() {
  * @version 1.0.0
  */
 
-export function pageNavigation(removeClass, addClass) {
+export function navigation(removeClass, addClass) {
   document.querySelectorAll(removeClass).forEach(element => element.classList.remove('active')); // elveszi az összes active-ot.
   document.querySelectorAll(addClass).forEach(element => element.classList.add('active')); // hozzaadja az active-ot az összes megadott-hoz.
 };

@@ -1,10 +1,10 @@
-import { pageNavigationEvents } from './pageNavigation.js';
+import { navigationEvents } from './navigation.js';
 import { getOptionsValues } from './gameInitializer.js';
 import { generateCardNumbers } from './gameInitializer.js';
 import { renderCards } from './gameInitializer.js'
 import { cardActions } from './cardActions.js';
 
-pageNavigationEvents();
+navigationEvents();
 
 /** ---------- STATE INITIALIZATION ----------
  * a játék globális állapotát tároló objektum
