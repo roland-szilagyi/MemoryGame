@@ -1,7 +1,7 @@
 import { pageNavigationEvents } from './pageNavigation.js';
-import { getOptionsValues } from './cardGenerator.js';
-import { generateCardNumbers } from './cardGenerator.js';
-import { renderCards } from './cardGenerator.js'
+import { getOptionsValues } from './gameInitializer.js';
+import { generateCardNumbers } from './gameInitializer.js';
+import { renderCards } from './gameInitializer.js'
 import { cardActions } from './cardActions.js';
 
 pageNavigationEvents();
