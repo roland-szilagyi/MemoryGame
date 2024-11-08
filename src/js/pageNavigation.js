@@ -1,4 +1,4 @@
-import { initializeGame } from './app.js';
+import { gameState, initializeGame } from './app.js';
 
 /** ---------- BUTTONS EVENTLISTENERS ----------
  * Inicializálja az eseményfigyelőket az oldal navigációs gombjaihoz és kezeli az oldalak közötti átmeneteket

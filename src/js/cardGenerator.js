@@ -15,8 +15,10 @@ export function getOptionsValues() {
   const stackSize = Number(document.querySelector('input[name="stackSize"]:checked')?.value);
   const difficult = Number(document.querySelector('input[name="difficult"]:checked')?.value);
   const cardColor = document.querySelector('#blue').checked ? 'Blue' : 'Red';
+  const flippedCards = [];
+  const pairsFound = 0;
 
-  return { stackSize, difficult, cardColor };
+  return { stackSize, difficult, cardColor, flippedCards, pairsFound };
 };
 
 /** ---------- GENERATING AND SHUFFLING CARD VALUES ----------

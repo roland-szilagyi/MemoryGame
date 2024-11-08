@@ -35,7 +35,7 @@ export let gameState = {
  * @version 1.0.0
  */
 
-function updateGameState(newState) {
+export function updateGameState(newState) {
   Object.assign(gameState, newState);
 };
 
