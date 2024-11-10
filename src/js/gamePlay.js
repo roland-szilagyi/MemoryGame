@@ -1,6 +1,6 @@
 import { gameState } from './app.js';
 import { isGameOver, pairsCounter } from './utils.js';
-import { renderScore, scoreCounter } from './score.js';
+import { scoreCounter } from './score.js';
 
 /** ---------- GAME PLAY KOMPLEX ----------
  * Ez egy komplex függvény ami egymás után hívja meg a kártyalogika függvényeit

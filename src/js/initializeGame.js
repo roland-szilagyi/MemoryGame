@@ -2,19 +2,16 @@ import { gameState } from "./app.js";
 
 /** ---------- SAVING OPTIONS VALUES ----------
  * Változókba menti a kiválasztott rádiógombok értékeit
- * Konvertálja az értékeket a megfelelő adattípusra
- * Visszaad egy objektumot az értékekkel */
+ * Konvertálja az értékeket a megfelelő adattípusra */
 
 export function getOptionsValues() {
-  const stackSize = Number(document.querySelector('input[name="stackSize"]:checked')?.value);
-  const difficult = Number(document.querySelector('input[name="difficult"]:checked')?.value);
-  const timeRem = Number(document.querySelector('input[name="difficult"]:checked')?.value);
-  const cardColor = document.querySelector('#blue').checked ? 'Blue' : 'Red';
-  const flippedCards = [];
-  const pairsFound = 0;
-  const score = 0;
-
-  return { stackSize, difficult, cardColor, flippedCards, pairsFound, timeRem, score };
+  gameState.stackSize = Number(document.querySelector('input[name="stackSize"]:checked')?.value);
+  gameState.difficult = Number(document.querySelector('input[name="difficult"]:checked')?.value);
+  gameState.timeRem = Number(document.querySelector('input[name="difficult"]:checked')?.value);
+  gameState.cardColor = document.querySelector('#blue').checked ? 'Blue' : 'Red';
+  gameState.flippedCards = [];
+  gameState.pairsFound = 0;
+  gameState.score = 0;
 };
 
 /** ---------- GENERATING AND SHUFFLING CARD VALUES ----------
@@ -22,7 +19,7 @@ export function getOptionsValues() {
  * Megduplázza a generált számokat
  * Megkeveri a megduplázott számokat */
 
-export function generateCardNumbers() {
+export function genCardNumbers() {
   let cardNumbers = [];
   for (let i = 1; i <= gameState.stackSize / 2; i++) {
     cardNumbers.push(i);
@@ -33,8 +30,7 @@ export function generateCardNumbers() {
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
 
-  return { shuffledCards: cardShuffled };
-  // { shuffledCards: [3, 1, 4, 2, 5, 3, 4, 1, 5, 2] }
+  gameState.shuffledCards = cardShuffled;
 };
 
 /** ---------- RENDERING CARDS ----------

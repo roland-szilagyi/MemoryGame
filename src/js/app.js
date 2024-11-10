@@ -1,7 +1,7 @@
-import { getOptionsValues, generateCardNumbers, renderCards } from './initializeGame.js';
+import { getOptionsValues, genCardNumbers, renderCards } from './initializeGame.js';
 import { gamePlay } from './gamePlay.js';
 import { startTimer, stopTimer } from './timer.js';
-import { scoreCounter, renderScore } from './score.js';
+import { renderScore } from './score.js';
 
 /** ---------- GLOBAL STATE ----------
  * A játék globális állapotát tároló objektum
@@ -15,14 +15,6 @@ export let gameState = {
   flippedCards: [],
   pairsFound: 0,
   score: 0
-};
-
-/** ---------- GLOBAL STATE UPDATE ----------
- * Frissíti a `gameState` objektumot az új értékekkel
- * A megadott `newState` értékek felülírják a meglévő `gameState` tulajdonságokat */
-
-function updateGameState(newState) {
-  Object.assign(gameState, newState);
 };
 
 /* ---------- GAME BUTTONS EVENTS ----------
@@ -48,8 +40,8 @@ function navigation(removeClass, addClass) {
 
 function buttonStart() {
   navigation('.js-options', '.js-game');    // Megjeleníti az 'Options' oldalt
-  updateGameState(getOptionsValues());      // Mentésre kerülnek a kiválasztott beállítások az állapotba
-  updateGameState(generateCardNumbers());   // Legenerálja és megkeveri a kártyák értékeit
+  getOptionsValues();                       // Mentésre kerülnek a kiválasztott beállítások az állapotba
+  genCardNumbers();                         // Legenerálja és megkeveri a kártyák értékeit
   renderCards();                            // Rendereli a kártyákat az értékek alapján
   renderScore();                            // Rendereli a kező pontszámot a 'gameState.score' értéke alapján
   startTimer();                             // Elindítja a visszaszámlálót a 'gameState.timeRem' értéke alapján
