@@ -52,7 +52,7 @@ function buttonStart() {
   updateGameState(generateCardNumbers());   // Legenerálja és megkeveri a kártyák értékeit
   renderCards();                            // Rendereli a kártyákat az értékek alapján
   gamePlay();                               // Elindítja a komplex kártyalogikát (a játékot)
-  startTimer(gameState);                    // Elindítja a visszaszámlálót a 'gameState.timeRem' értéke alapján
+  startTimer();                             // Elindítja a visszaszámlálót a 'gameState.timeRem' értéke alapján
 };
 
 function buttonStop() {

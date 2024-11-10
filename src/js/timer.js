@@ -1,9 +1,11 @@
+import { gameState } from "./app.js";
+
 let timer;
 
 /** ---------- START TIMER ----------
  * A visszaszámláló elindítása és frissítése */
 
-export function startTimer(gameState) {
+export function startTimer() {
   timer = setInterval(renderTime, 1000);
 
   function renderTime() {
