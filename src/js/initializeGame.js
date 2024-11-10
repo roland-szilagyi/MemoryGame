@@ -1,35 +1,27 @@
 import { gameState } from "./app.js";
 
 /** ---------- SAVING OPTIONS VALUES ----------
- * változókba menti a kiválasztott rádiógombok értékeit
- * konvertálja az értékeket a megfelelő adattípusra
- * visszaad egy objektumot az értékekkel
- * 
- * @return {Object}
- * @property {number} stackSize - a kártyapakli mérete
- * @property {number} difficult - a kiválasztott nehézségi szint
- * @property {string} cardColor - a kiválasztott kártya szín
- * @version 1.0.0
- */
+ * Változókba menti a kiválasztott rádiógombok értékeit
+ * Konvertálja az értékeket a megfelelő adattípusra
+ * Visszaad egy objektumot az értékekkel */
+
 export function getOptionsValues() {
   const stackSize = Number(document.querySelector('input[name="stackSize"]:checked')?.value);
   const difficult = Number(document.querySelector('input[name="difficult"]:checked')?.value);
+  const timeRem = Number(document.querySelector('input[name="difficult"]:checked')?.value);
   const cardColor = document.querySelector('#blue').checked ? 'Blue' : 'Red';
   const flippedCards = [];
   const pairsFound = 0;
+  const score = 0;
 
-  return { stackSize, difficult, cardColor, flippedCards, pairsFound };
+  return { stackSize, difficult, cardColor, flippedCards, pairsFound, timeRem, score };
 };
 
 /** ---------- GENERATING AND SHUFFLING CARD VALUES ----------
- * legenerálja a kártyaértékeket A 'STACKSIZE' alapján
- * megduplázza a generált számokat
- * megkeveri a megduplázott számokat
- * 
- * @return {Object}
- * @property {Array<number>} shuffledCards - a megkevert kártyaértékek
- * @version 1.0.0
- */
+ * Legenerálja a kártyaértékeket A 'stacksize' alapján
+ * Megduplázza a generált számokat
+ * Megkeveri a megduplázott számokat */
+
 export function generateCardNumbers() {
   let cardNumbers = [];
   for (let i = 1; i <= gameState.stackSize / 2; i++) {
@@ -42,17 +34,13 @@ export function generateCardNumbers() {
     .map(({ value }) => value);
 
   return { shuffledCards: cardShuffled };
+  // { shuffledCards: [3, 1, 4, 2, 5, 3, 4, 1, 5, 2] }
 };
 
 /** ---------- RENDERING CARDS ----------
- * 'img' elemek generálása a megkevert értékekböl
- * kártyaszín kiválasztása a 'cardColor' érték alapján
- * 
- * @param {Array<number>} shuffledCards - a kirenderelendő megkevert kártyaértékek
- * @param {string} cardColor - a kártya hátlapjának színe (Kék vagy Piros)
- * @return {void}
- * @version 1.0.0
- */
+ * 'img' elemek generálása a megkevert értékekből
+ * Kártyaszín kiválasztása a 'cardColor' érték alapján */
+
 export function renderCards() {
   let cardsCont = document.querySelector('.js-cards-cont');
   let cardColor = gameState.cardColor;

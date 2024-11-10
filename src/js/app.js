@@ -1,62 +1,69 @@
-import { navigationEvents } from './navigation.js';
-import { getOptionsValues } from './gameInitializer.js';
-import { generateCardNumbers } from './gameInitializer.js';
-import { renderCards } from './gameInitializer.js'
-import { cardActions } from './cardActions.js';
+import { getOptionsValues, generateCardNumbers, renderCards } from './initializeGame.js';
+import { gamePlay } from './gamePlay.js';
+import { startTimer, stopTimer } from './timer.js';
+import { scoreCounter } from './utils.js';
 
-navigationEvents();
+/** ---------- GLOBAL STATE ----------
+ * A játék globális állapotát tároló objektum
+ * Tartalma: kártyapakli méret, nehézségi szint, kártyák színe, aktuális megfordított kártya, megtalált párok száma, pontszám */
 
-/** ---------- STATE INITIALIZATION ----------
- * a játék globális állapotát tároló objektum
- * tartalmazza a kártyapakli méretét, a nehézségi szintet, a kártyák színét, 
- * a megfordított kártyák tömbjét és a megtalált párok számát
- * 
- * @property {number} stackSize - a játékban használt kártyák száma
- * @property {number} difficult - a játék nehézségi szintje
- * @property {string} cardColor - a kártyák hátlapjának színe (kék vagy piros)
- * @property {Array<string>} flippedCards - az aktuálisan megfordított kártyák azonosítóit tartalmazó tömb
- * @property {number} pairsFound - a megtalált párok száma
- * @version 1.0.0
- */
 export let gameState = {
   stackSize: 0,
   difficult: 0,
+  timeRem: 0,
   cardColor: '',
   flippedCards: [],
   pairsFound: 0,
+  score: 0
 };
 
-/** ---------- STATE UPDATE ----------
- * frissíti a `gameState` objektumot az új értékekkel
- * a megadott `newState` értékek felülírják a meglévő `gameState` tulajdonságokat
- * 
- * @param {Object} newState - Az új állapotot tartalmazó objektum, amely felülírja a `gameState` tulajdonságait.
- * @returns {void}
- * @version 1.0.0
- */
+/** ---------- GLOBAL STATE UPDATE ----------
+ * Frissíti a `gameState` objektumot az új értékekkel
+ * A megadott `newState` értékek felülírják a meglévő `gameState` tulajdonságokat */
 
-export function updateGameState(newState) {
+function updateGameState(newState) {
   Object.assign(gameState, newState);
 };
 
-/** ---------- GAME INITIALIZATION ----------
- * mentésre kerülnek a beállítások (stackSize, difficult, cardColor)
- * legenerálja és megkeveri a kártyák értékeit
- * rendereli a kártyákat a felületen
- * aktiválja az eseményfigyelőket a kártyafordításhoz
- * 
- * @returns {void}
- * @version 1.0.0
- * @example
- */
+/* ---------- GAME BUTTONS EVENTS ----------
+ * Inicializálja az eseményfigyelőket az oldal navigációs gombjaihoz */
 
-export function initializeGame() {
-  const optionsValues = getOptionsValues();  // SAVING OPTIONS VALUES
-  updateGameState(optionsValues);            // STATE UPDATE
+document.querySelector('.js-btn-start').addEventListener('click', buttonStart);
+document.querySelector('.js-btn-stop').addEventListener('click', buttonStop);
+document.querySelector('.js-btn-next').addEventListener('click', buttonNext);
+document.querySelector('.js-btn-home').addEventListener('click', buttonHome);
 
-  const cardNumbers = generateCardNumbers(); // GENERATING AND SHUFFLING CARD VALUES
-  updateGameState(cardNumbers);              // STATE UPDATE
+/* ---------- SITES NAVIGATION FUNCTION ----------
+ * Kezeli az oldalak közötti átmeneteket az osztályok cseréjével
+ * elem1 -'active'
+ * elem2 +'active' */
 
-  renderCards();                             // RENDERING CARDS
-  cardActions();                             // Aktiváljuk az eseményfigyelőket
+function navigation(removeClass, addClass) {
+  document.querySelectorAll(removeClass).forEach(element => element.classList.remove('active'));
+  document.querySelectorAll(addClass).forEach(element => element.classList.add('active'));
+};
+
+/* ---------- GAME BUTTONS ACTIONS ----------
+ * Lefuttatja a játék különböző részeit */
+
+function buttonStart() {
+  navigation('.js-options', '.js-game');    // Megjeleníti az 'Options' oldalt
+  updateGameState(getOptionsValues());      // Mentésre kerülnek a kiválasztott beállítások az állapotba
+  updateGameState(generateCardNumbers());   // Legenerálja és megkeveri a kártyák értékeit
+  renderCards();                            // Rendereli a kártyákat az értékek alapján
+  gamePlay();                               // Elindítja a komplex kártyalogikát (a játékot)
+  startTimer(gameState);                    // Elindítja a visszaszámlálót a 'gameState.timeRem' értéke alapján
+};
+
+function buttonStop() {
+  navigation('.js-game', '.js-options');
+  stopTimer();
+};
+
+function buttonNext() {
+  navigation('.js-home', '.js-options');
+};
+
+function buttonHome() {
+  navigation('.js-options', '.js-home');
 };

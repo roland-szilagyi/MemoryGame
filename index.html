@@ -56,13 +56,13 @@
           </div>
           <div class="input__cont">
             <label for="easy">easy
-              <input type="radio" id="easy" name="difficult" value="1">
+              <input type="radio"  class="js-difficult"  id="easy" name="difficult" value="40">
             </label>
             <label for="medium">medium
-              <input type="radio" id="medium" name="difficult" value="2" checked>
+              <input type="radio"  class="js-difficult"  id="medium" name="difficult" value="30" checked>
             </label>
             <label for="hard">hard
-              <input type="radio" id="hard" name="difficult" value="3">
+              <input type="radio"  class="js-difficult"  id="hard" name="difficult" value="20">
             </label>
           </div>
         </div>
@@ -87,6 +87,25 @@
       </div>
     </section>
   </main>
+
+  <!--
+  <form class="popup__congrats  js-popup__congrats" action="#">
+    <div>
+      <h2>Congratulations!</h2>
+    </div>
+    <div>
+      <h3>Your score:</h3>
+      <p>SCORE</p>
+    </div>
+      <h3>Please enter your name:</h3>
+      <input type="text">
+    </div>
+    <div>
+      <button class="js-btn-restart">Play Again</button>
+      <button class="js-btn-savescore">Save Score</button>
+    </div>
+  </form>
+  -->
   
   <footer>
     <section class="footer__home  js-home  active">
@@ -97,12 +116,14 @@
       <button class="js-btn-start">START</button>
     </section>
     <section class="footer__game  js-game">
+      <p class="js-time">TIME</p>
+      <p class="js-score">SCORE</p>
       <button class="js-btn-stop">STOP</button>
     </section>
   </footer>
   <script type="module" src="./src/js/app.js"></script>
-  <script type="module" src="./src/js/navigation.js"></script>
-  <script type="module" src="./src/js/gameInitializer.js"></script>
-  <script type="module" src="./src/js/cardActions.js"></script>
+  <script type="module" src="./src/js/initializeGame.js"></script>
+  <script type="module" src="./src/js/gamePlay.js"></script>
+  <script type="module" src="./src/js/timer.js"></script>
 </body>
 </html>
