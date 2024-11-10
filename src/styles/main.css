@@ -108,6 +108,43 @@ footer {
   align-items: center;
   flex-wrap: nowrap;
 }
+footer .footer__game {
+  width: 100vw;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+footer .footer__game .details__cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+footer .footer__game .details__cont .time__cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0 1rem;
+}
+footer .footer__game .details__cont .score__cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin: 0 1rem;
+}
+footer .footer__game .button__cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
 
 main {
   outline: 1px dashed green;

@@ -2,4 +2,30 @@ footer {
   @include outline;
   @include box(100vw, 12vh);
   @include flex(flex, row, space-evenly, center, nowrap);
+
+  .footer__game {
+    width: 100vw;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+
+    .details__cont {
+      @include flex(flex, row, center, center, nowrap);
+
+      .time__cont {
+        @include flex(flex, column, center, center, nowrap);
+        margin: 0 1rem;
+      }
+
+      .score__cont {
+        @include flex(flex, column, center, center, nowrap);
+        margin: 0 1rem;
+      }
+    }
+
+    .button__cont {
+      @include flex(flex, row, center, center, nowrap);
+    }
+  }
 }

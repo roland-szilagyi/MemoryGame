@@ -17,12 +17,3 @@ export function isGameOver() {
     console.log('Játék vége. Megtaláltad az összes párt!');
   }
 };
-
-/** ---------- INCREASING SCORE ----------
- * A függvény növeli a 'score' értékét és frissíti a DOM-ot */
-
-export function scoreCounter(value) {
-  const scoreCounterElement = document.querySelector('.js-score');
-  value.score += value.timeRem * 12;
-  scoreCounterElement.innerText = value.score;
-};

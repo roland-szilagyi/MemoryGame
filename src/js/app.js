@@ -1,7 +1,7 @@
 import { getOptionsValues, generateCardNumbers, renderCards } from './initializeGame.js';
 import { gamePlay } from './gamePlay.js';
 import { startTimer, stopTimer } from './timer.js';
-import { scoreCounter } from './utils.js';
+import { scoreCounter, renderScore } from './score.js';
 
 /** ---------- GLOBAL STATE ----------
  * A játék globális állapotát tároló objektum
@@ -51,8 +51,9 @@ function buttonStart() {
   updateGameState(getOptionsValues());      // Mentésre kerülnek a kiválasztott beállítások az állapotba
   updateGameState(generateCardNumbers());   // Legenerálja és megkeveri a kártyák értékeit
   renderCards();                            // Rendereli a kártyákat az értékek alapján
-  gamePlay();                               // Elindítja a komplex kártyalogikát (a játékot)
+  renderScore();                            // Rendereli a kező pontszámot a 'gameState.score' értéke alapján
   startTimer();                             // Elindítja a visszaszámlálót a 'gameState.timeRem' értéke alapján
+  gamePlay();                               // Elindítja a komplex kártyalogikát (a játékot)
 };
 
 function buttonStop() {

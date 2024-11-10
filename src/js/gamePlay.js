@@ -1,5 +1,6 @@
 import { gameState } from './app.js';
-import { isGameOver, pairsCounter, scoreCounter } from './utils.js';
+import { isGameOver, pairsCounter } from './utils.js';
+import { renderScore, scoreCounter } from './score.js';
 
 /** ---------- GAME PLAY KOMPLEX ----------
  * Ez egy komplex függvény ami egymás után hívja meg a kártyalogika függvényeit
@@ -81,7 +82,7 @@ function flippedCardsValuesCheck() {
     });
     console.log(gameState.flippedCards);
     pairsCounter();
-    scoreCounter(gameState);
+    scoreCounter();
     isGameOver();
     gamePlay();
   }
