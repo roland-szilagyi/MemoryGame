@@ -1,5 +1,5 @@
 import { gameState } from './app.js';
-import { isGameOver, pairsCounter } from './utils.js';
+import { isGameOver, pairsCounter, cardTurnEventRemover } from './utils.js';
 import { scoreCounter } from './score.js';
 
 /** ---------- GAME PLAY KOMPLEX ----------
@@ -21,7 +21,7 @@ export function gamePlay() {
  * Eltávolítja az eseményfigyelőt, hogy ne lehessen újra megfordítani
  * Meghívja a 'pushToFlippedCards' függvényt a 'cardId' attributummal */
 
-function cardTurnEvent(event) {
+export function cardTurnEvent(event) {
   const clickedCard = event.target;
   const cardId = clickedCard.dataset.cardId;
 
@@ -53,12 +53,7 @@ function pushToFlippedCards(value) {
 
 function flippedCardsLengthCheck() {
   if ( gameState.flippedCards.length === 2 ) {
-    
-    const allCards = document.querySelectorAll('.cards');
-    allCards.forEach(card => {
-      card.removeEventListener('click', cardTurnEvent);
-    });
-    
+    cardTurnEventRemover();
     flippedCardsValuesCheck();
     gameState.flippedCards = [];
   };

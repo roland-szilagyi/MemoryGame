@@ -1,4 +1,6 @@
 import { gameState } from "./app.js";
+import { cardTurnEvent } from "./gamePlay.js";
+import { cardTurnEventRemover } from "./utils.js";
 
 let timer;
 
@@ -23,6 +25,11 @@ export function startTimer() {
 
     gameState.timeRem -= 1;
     timeCounter.innerText = minute + ":" + seconds;
+
+    if ( gameState.timeRem < 0 ) {
+      stopTimer();
+      cardTurnEventRemover();
+    };
   };
 
   renderTime();
