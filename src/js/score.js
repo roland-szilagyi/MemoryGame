@@ -5,7 +5,22 @@ import { gameState } from "./app.js";
 
 export function scoreCounter() {
   const scoreCounterElement = document.querySelector('.js-score');
-  gameState.score += gameState.timeRem * 12;
+  const difficultyMultipliers = {
+    20: 3,    // Nehezebb szint, magasabb szorzó
+    30: 2,    // Közepes szint, közepes szorzó
+    40: 1     // Könnyebb szint, alap szorzó
+  };
+  const stackSizeMultipliers = {
+    14: 3,    // Nagyobb stack, magasabb szorzó
+    10: 2,    // Közepes stack, közepes szorzó
+    6: 1      // Kis stack, alap szorzó
+  };
+
+  const difficultyLevel = gameState.difficult;
+  const stackSize = gameState.stackSize;
+  const points = gameState.timeRem * difficultyMultipliers[difficultyLevel] * stackSizeMultipliers[stackSize];
+
+  gameState.score += Math.round(points);
   scoreCounterElement.innerText = gameState.score;
 };
 
