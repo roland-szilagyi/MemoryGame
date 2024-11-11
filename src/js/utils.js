@@ -1,4 +1,5 @@
 import { gameState } from "./app.js";
+import { stopTimer } from "./timer.js";
 
 /** ---------- INCREASING FOUND PAIRS ----------
  * A függvény növeli a 'pairsFound' globális állapot értékét 1-el */
@@ -15,5 +16,6 @@ export function pairsCounter() {
 export function isGameOver() {
   if (gameState.stackSize === gameState.pairsFound * 2) {
     console.log('Játék vége. Megtaláltad az összes párt!');
+    stopTimer();
   }
 };
