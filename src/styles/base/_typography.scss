@@ -6,6 +6,6 @@ $font-primary: "../assets/fonts";
 
 $font-secondary: "../assets/fonts";
 @font-face {
-  src: url(#{$font-secondary}/fontname.ttf);
+  src: url(#{$font-secondary}/characters.ttf);
   font-family: 'font-secondary';
 }
