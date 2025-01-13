@@ -29,3 +29,8 @@ export function cardTurnEventRemover() {
       card.removeEventListener('click', cardTurnEvent);
     });
 };
+
+export function popup() {
+  let form = document.querySelector('.js-popup__congrats');
+  form.classList.remove('hidden');
+};

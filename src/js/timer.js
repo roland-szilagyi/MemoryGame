@@ -1,6 +1,7 @@
 import { gameState } from "./app.js";
 import { cardTurnEvent } from "./gamePlay.js";
 import { cardTurnEventRemover } from "./utils.js";
+import { popup } from "./utils.js";
 
 let timer;
 
@@ -29,6 +30,7 @@ export function startTimer() {
     if ( gameState.timeRem < 0 ) {
       stopTimer();
       cardTurnEventRemover();
+      popup();
     };
   };
 
