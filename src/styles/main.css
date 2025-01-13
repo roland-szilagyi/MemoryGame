@@ -67,7 +67,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 @font-face {
-  src: url(../assets/fonts/fontname.ttf);
+  src: url(../assets/fonts/bubblegum.ttf);
   font-family: "font-primary";
 }
 @font-face {
@@ -81,10 +81,10 @@ button {
   outline: none;
   border: 0.08rem solid black;
   text-align: center;
-  font-weight: bold;
   transition: all 0.2s ease;
   position: relative;
   border-radius: 0.2rem;
+  font-family: "font-primary";
 }
 
 button:hover {

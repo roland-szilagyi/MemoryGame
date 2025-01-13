@@ -5,10 +5,10 @@ button {
   outline: none;
   border: 0.08rem solid black;
   text-align: center;
-  font-weight: bold;
   transition: all 0.2s ease;
   position: relative;
   border-radius: 0.2rem;
+  font-family: 'font-primary';
 }
 button:hover {
   background-color: #112166;
