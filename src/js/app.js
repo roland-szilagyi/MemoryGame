@@ -43,7 +43,7 @@ function buttonStart() {
   getOptionsValues();                       // Mentésre kerülnek a kiválasztott beállítások az állapotba
   genCardNumbers();                         // Legenerálja és megkeveri a kártyák értékeit
   renderCards();                            // Rendereli a kártyákat az értékek alapján
-  renderScore();                            // Rendereli a kező pontszámot a 'gameState.score' értéke alapján
+  renderScore();                            // Rendereli a kezdő pontszámot a 'gameState.score' értéke alapján
   startTimer();                             // Elindítja a visszaszámlálót a 'gameState.timeRem' értéke alapján
   gamePlay();                               // Elindítja a komplex kártyalogikát (a játékot)
 };
